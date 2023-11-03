@@ -22,6 +22,11 @@ type Addr struct {
 }
 
 func main() {
+	if len(os.Args) != 2 {
+		fmt.Println("Por favor informe UM cep como parametro!")
+		return
+	}
+
 	cep := os.Args[1]
 
 	req, err := http.Get("http://viacep.com.br/ws/" + cep + "/json/")
