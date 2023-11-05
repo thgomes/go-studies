@@ -1,0 +1,41 @@
+{{ template "header.html" }}
+
+    <h1>Busca CEP</h1>
+    <div class="cta-button">
+        <a href="#">Comece Agora</a>
+        {{ if and (ne .Cep "") .Found }}
+            <table>
+                <tr>
+                    <th>CEP</th>
+                    <th>Logradouro</th>
+                    <th>Complemento</th>
+                    <th>Bairro</th>
+                    <th>Localidade</th>
+                    <th>UF</th>
+                    <th>IBGE</th>
+                    <th>GIA</th>
+                    <th>DDD</th>
+                    <th>SIAFI</th>
+                </tr>
+                <tr>
+                    <td>{{.Addr.Cep}}</td>
+                    <td>{{.Addr.Logradouro}}</td>
+                    <td>{{.Addr.Complemento}}</td>
+                    <td>{{.Addr.Bairro}}</td>
+                    <td>{{.Addr.Localidade}}</td>
+                    <td>{{.Addr.Uf}}</td>
+                    <td>{{.Addr.Ibge}}</td>
+                    <td>{{.Addr.Gia}}</td>
+                    <td>{{.Addr.Ddd}}</td>
+                    <td>{{.Addr.Siafi}}</td>
+                </tr>
+            </table>
+        {{ end }}
+
+        {{ if and (ne .Cep "") (not .Found) }}
+            <strong>CEP INFORMADO NÃO FOI ENCONTRADO!</strong>
+        {{ end }}
+
+    </div>
+
+{{ template "footer.html" }}
